@@ -1,6 +1,3 @@
-# Sistema-de-controle-de-temperatura
-Aqui está uma sugestão de estrutura em Markdown para o README.md do seu repositório no GitHub. Você pode copiar o conteúdo abaixo e colar diretamente no arquivo do seu projeto.
-
 Sistema de Controle de Temperatura em Malha Fechada 🌡️
 Este repositório contém o firmware base desenvolvido para o projeto acadêmico de um sistema de controle térmico. O código foi projetado para operar em um Arduino Uno, realizando a aquisição de dados analógicos de um sensor de temperatura, conversão de grandezas elétricas e atuação sobre uma carga térmica (lâmpada), incluindo uma trava de segurança temporizada.
 
