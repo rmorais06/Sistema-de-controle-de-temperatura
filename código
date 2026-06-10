@@ -1,0 +1,37 @@
+// Definições dos pinos
+const int pinoLampada = 9;
+const int pinoSensor = A0;
+
+void setup() {
+  Serial.begin(9600); // Inicializa a comunicação serial
+  pinMode(pinoLampada, OUTPUT);
+  
+  // Liga o atuador imediatamente em nível lógico ALTO (100% de potência)
+  digitalWrite(pinoLampada, HIGH); 
+}
+
+void loop() {
+  // Leitura do conversor analógico-digital (0 a 1023)
+  int valorADC = analogRead(pinoSensor);
+  
+  // Converte o valor do ADC para Tensão (considerando 5V e 10 bits de resolução)
+  float tensao = valorADC * (5.0 / 1024.0);
+  
+  // Converte a tensão para Temperatura (Sensibilidade do LM35: 10mV/°C ou 0.01V/°C)
+  float temperatura = tensao / 0.01; // É o mesmo que multiplicar por 100
+
+  // Imprime os dados para monitoramento
+  Serial.print("ADC: ");
+  Serial.print(valorADC);
+  Serial.print(" | Tensao (V): ");
+  Serial.print(tensao);
+  Serial.print(" | Temp (C): ");
+  Serial.println(temperatura);
+
+  // Se o tempo decorrido desde o início for maior que 15 segundos (15000 ms)
+  if (millis() > 15000) {
+    digitalWrite(pinoLampada, LOW); // Desliga a lâmpada por segurança
+  }
+
+  delay(500); // Pausa de 500 ms entre as leituras
+}
